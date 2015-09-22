@@ -22,8 +22,8 @@
 					url: '/whatever' 
 					, method: method
 					, headers: {
-						range				: '0-10'
-						, 'X-Range'			: '0-10'
+						  range				: 'Entities 0-10'
+						, 'X-Range'			: 'Entities 0-10'
 						, select			: 'id,eventData.eventDataLocale.title,eventType.name,eventData.venueFloor.venue.name,eventData.venueFloor.venue.city.name,startdate,eventData.tag.*'
 						, filter			: 'eventData.eventDataLocale.title=like("%nino%"")'
 						, order 			: 'id ASC'
@@ -34,7 +34,7 @@
 					, complete: function() {
 						callsDone++;
 						if( callsDone === 6 ) {
-							alert('all done, thanks valeria!');
+							alert('all done, thanks!');
 						}
 					}
 					, error: function() {
