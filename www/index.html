@@ -4,6 +4,54 @@
     <title>Header Tester</title>
 </head>
 <body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+	$( function() {
+
+		var callsDone = 0;
+
+		[ 'POST', 'GET', 'PATCH', 'PUT', 'DELETE', 'OPTIONS' ].forEach( function( method ) {
+
+			var calls = [];
+
+			calls.push(
+
+				$.ajax( {
+					url: '/whatever' 
+					, method: method
+					, headers: {
+						range				: '0-10'
+						, 'X-Range'			: '0-10'
+						, select			: 'id,eventData.eventDataLocale.title,eventType.name,eventData.venueFloor.venue.name,eventData.venueFloor.venue.city.name,startdate,eventData.tag.*'
+						, filter			: 'eventData.eventDataLocale.title=like("%nino%"")'
+						, order 			: 'id ASC'
+						, Authorization		: 'ee-simple 524357549d9dacc7964dc9b5d0740478a3c7b58a4600e42c60ea9f39'
+						, 'Api-Version'		: '0.1'
+						, 'Accept-Language'	:'de, en, fr'
+					}
+					, complete: function() {
+						callsDone++;
+						if( callsDone === 6 ) {
+							alert('all done, thanks valeria!');
+						}
+					}
+					, error: function() {
+						alert('ERROR');
+					}
+				} )
+
+			);
+
+
+		} );
+
+	} );
+
+</script>
+
+
     Header Test
 </body>
 </html>
